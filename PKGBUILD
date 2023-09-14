@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers
 
 pkgname=chatterino2-dankerino-git
-pkgver=2023.08.10
+pkgver=2023.09.14
 pkgrel=1
 pkgdesc="Fork of Chatterino 2"
 arch=(any)
