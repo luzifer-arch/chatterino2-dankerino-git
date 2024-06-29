@@ -1,25 +1,27 @@
 pkgbase = chatterino2-dankerino-git
 	pkgdesc = Fork of Chatterino 2
-	pkgver = 2024.03.13
+	pkgver = 2024.05.06
 	pkgrel = 1
 	url = https://github.com/Mm2PL/dankerino
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = qt5-svg
 	makedepends = boost
 	makedepends = cmake
-	depends = qt5-base
-	depends = qt5-tools
+	depends = qt6-base
+	depends = qt6-tools
 	depends = boost-libs
 	depends = openssl
-	depends = qt5-imageformats
-	depends = qtkeychain-qt5
+	depends = qt6-imageformats
+	depends = qtkeychain-qt6
+	depends = qt6-5compat
+	depends = qt6-svg
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	provides = chatterino
 	conflicts = chatterino
+	options = !lto
 	source = git+https://github.com/Mm2PL/dankerino.git#tag=nightly-build
-	sha512sums = SKIP
+	sha512sums = c1ded96b2b94b527b38a8800eba505884dbaf28406d697434ca5137a4a8ce22d9f7503319a12cf836012b8cba7efe06ced3b4a03e7ac550f0d8aa6bc8d60f795
 
 pkgname = chatterino2-dankerino-git

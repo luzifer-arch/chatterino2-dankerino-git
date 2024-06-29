@@ -1,8 +1,8 @@
 # Maintainer: Knut Ahlers
 
 pkgname=chatterino2-dankerino-git
-pkgver=r4821.6b3db9e4
-pkgrel=2
+pkgver=2024.05.06
+pkgrel=1
 pkgdesc="Fork of Chatterino 2"
 arch=(any)
 url=https://github.com/Mm2PL/dankerino
@@ -21,7 +21,7 @@ conflicts=('chatterino')
 options=('!lto')
 
 source=("git+${url}.git#tag=nightly-build")
-sha512sums=('SKIP')
+sha512sums=('c1ded96b2b94b527b38a8800eba505884dbaf28406d697434ca5137a4a8ce22d9f7503319a12cf836012b8cba7efe06ced3b4a03e7ac550f0d8aa6bc8d60f795')
 
 build() {
   cd "${srcdir}/dankerino"
