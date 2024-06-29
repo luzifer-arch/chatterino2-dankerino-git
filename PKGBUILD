@@ -1,20 +1,24 @@
 # Maintainer: Knut Ahlers
 
 pkgname=chatterino2-dankerino-git
-pkgver=2024.03.13
-pkgrel=1
+pkgver=r4821.6b3db9e4
+pkgrel=2
 pkgdesc="Fork of Chatterino 2"
 arch=(any)
 url=https://github.com/Mm2PL/dankerino
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
-makedepends=('git' 'qt5-svg' 'boost' 'cmake')
+depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
+makedepends=('git' 'boost' 'cmake')
 optdepends=(
   'streamlink: For piping streams to video players'
   'pulseaudio: For audio output'
 )
 provides=('chatterino')
 conflicts=('chatterino')
+
+# We temporarily disable LTO since we get an ICE when compiling with gcc since this commit https://github.com/Chatterino/chatterino2/commit/ed20e71db4c957d3b2a8ce9350b847f4c805cb83
+# Bug report tracking https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114501
+options=('!lto')
 
 source=("git+${url}.git#tag=nightly-build")
 sha512sums=('SKIP')
@@ -25,21 +29,22 @@ build() {
   mkdir -p build
   cd build
 
+  declare -a flags
+  if [[ $CXXFLAGS == *"-flto"* ]]; then
+    flags+=("-DCHATTERINO_LTO=ON")
+  fi
+
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_SYSTEM_QTKEYCHAIN=ON \
     -DUSE_PRECOMPILED_HEADERS=OFF \
+    -DBUILD_WITH_QT6=ON \
+    -DCHATTERINO_UPDATER=OFF \
+    -DCHATTERINO_PLUGINS=ON \
+    "${flags[@]}" \
     ..
 
-  if [ -z "$CCACHE_SLOPPINESS" ]; then
-    # We need to set the ccache sloppiness for the chatterino build to use it properly
-    # This is due to our use of precompiled headers
-    # See https://ccache.dev/manual/3.3.5.html#_precompiled_headers
-    CCACHE_SLOPPINESS="pch_defines,time_macros"
-    export CCACHE_SLOPPINESS
-  fi
-
-  make
+  cmake --build .
 }
 
 package() {
