@@ -1,6 +1,6 @@
 pkgbase = chatterino2-dankerino-git
 	pkgdesc = Fork of Chatterino 2
-	pkgver = 2025.01.08
+	pkgver = 2025.01.17
 	pkgrel = 1
 	url = https://github.com/Mm2PL/dankerino
 	arch = any
@@ -22,6 +22,6 @@ pkgbase = chatterino2-dankerino-git
 	conflicts = chatterino
 	options = !lto
 	source = git+https://github.com/Mm2PL/dankerino.git#tag=nightly-build
-	sha512sums = 924cd087db6a33be7f3c7aa324a264c5c92d73e92d6d6ddac647399696be09828389781d17da1a7e0882f4b33d477d09e3456cc6afe994f5a39189acccd353b0
+	sha512sums = 635ada269b9aeb41c4cc3161d6552712c7185ce647c3917c9e831a9d273bd0c5f61985c702e4f17fc7554d21af3e4e88e14b0490a74868b3a5f92181f5255f66
 
 pkgname = chatterino2-dankerino-git
