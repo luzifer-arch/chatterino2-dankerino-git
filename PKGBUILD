@@ -7,8 +7,22 @@ pkgdesc="Fork of Chatterino 2"
 arch=(any)
 url=https://github.com/Mm2PL/dankerino
 license=('MIT')
-depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
-makedepends=('git' 'boost' 'cmake')
+depends=(
+  'boost-libs'
+  'libnotify'
+  'openssl'
+  'qt6-5compat'
+  'qt6-base'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qt6-tools'
+  'qtkeychain-qt6'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+)
 optdepends=(
   'streamlink: For piping streams to video players'
   'pulseaudio: For audio output'
